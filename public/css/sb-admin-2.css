@@ -10918,6 +10918,11 @@ a:focus {
   width: 2rem;
 }
 
+.img-profile-large {
+  height: 3rem;
+  width: 3rem;
+}
+
 .topbar {
   height: 4.375rem;
 }

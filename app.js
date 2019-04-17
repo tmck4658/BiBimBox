@@ -60,6 +60,7 @@ app.use("/projects", require("./routes/projectRouter"));
 app.use("/sections", require("./routes/sectionRouter.js"));
 app.use("/folders", require("./routes/folderRouter.js"));
 app.use("/materials", require("./routes/materialRouter.js"));
+app.use("/uploads", require("./routes/uploadRouter"));
 //#endregion end of routes
 
 const PORT = process.env.PORT || 5000;

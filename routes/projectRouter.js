@@ -12,4 +12,20 @@ router.get("/", function(req, res) {
   });
 });
 
+//#region post requests
+router.post("/newProjects", function(req, res) {
+  let projectBody = new project();
+  (projectBody.projectName = req.body.pTitle),
+    (projectBody.description = req.body.pDescription);
+  projectBody.save(function(err, savedProject) {
+    if (err) {
+      res.status(500).send({ error: "Could not save Project" + err });
+    } else {
+      console.log("project created");
+      res.redirect("/main");
+    }
+  });
+});
+//#endregion end of post
+
 module.exports = router;
