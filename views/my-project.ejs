@@ -208,7 +208,7 @@
           <!-- Project Carousel -->
           <div class="row">    
             <!-- Course Cards-->
-            <% for(var i = 0; i < user.projects.length; i++) { %>
+            <% for(var i = 0; i < project.folders.length; i++) { %>
               <div class="col-xl-3 col-lg-4 d-flex">
                   <div class="card shadow mb-3 h-90">
                     <img
@@ -219,9 +219,9 @@
                     <!-- Card Body -->
                     <div class="card-body flex-fill">
                       <div class= "text-center">
-                        <a href="/<%=user.projects[i]._id%>" class="font-weight-bold text-primary"><%=user.projects[i].projectName%></a>
+                        <a href="#" class="font-weight-bold text-primary"><%=project.folders[i].folderName%></a>
                       </div>
-                      <p class="card-text"><%= user.projects[i].description.slice(0, 120) + " ..." %></p>
+                      <p class="card-text"><%= project.folders[i].description.slice(0, 120) + " ..." %></p>
                     </div>
                   </div>
               </div>
@@ -326,20 +326,20 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="createProject">Create Your Own Project</h5>
+          <h5 class="modal-title" id="createProject"><%= "Create Folder for " + project.projectName %></h5>
         </div>
         
         <div class="modal-body">
 
-          <form id= "projectCreationForm" action="/users/new-project/<%=user._id%>"  method="POST">
+          <form id= "projectCreationForm" action="/my-projects/new-folder/<%=project._id%>"  method="POST">
             
             <div class="form-group">
-              <label for="projectTitle" class="col-form-label">Project Name:</label>
-              <input type="text" class="form-control" id="projectTitle" name="pTitle" placeholder="What is the title of your project?">
+              <label for="projectTitle" class="col-form-label">Folder Name:</label>
+              <input type="text" class="form-control" id="projectTitle" name="fTitle" placeholder="What is the title of your project?">
             </div>
             <div class="form-group">
               <label for="ProjectDescription" class="col-form-label">Description:</label>
-              <textarea type="text" class="form-control" id="projectDescription" name="pDescription" placeholder="Please describe your project here"></textarea>
+              <textarea type="text" class="form-control" id="projectDescription" name="fDescription" placeholder="Please describe your project here"></textarea>
             </div>
 
             <div class="modal-footer">
