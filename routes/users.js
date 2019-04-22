@@ -3,15 +3,31 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 // Load User model
+const projects = require("../models/project");
 const User = require("../models/User");
 const { forwardAuthenticated } = require("../config/auth");
 
-router.get("/", function(req, res) {
-  User.find({}, function(err, users) {
+//add project to the user
+router.post("/new-project/:userId", function(req, res) {
+  let projectBody = new projects();
+  (projectBody.projectName = req.body.pTitle),
+    (projectBody.description = req.body.pDescription);
+  projectBody.save(function(err, savedProject) {
     if (err) {
-      res.status(500).send("Could not fetch user data");
+      res.status(500).send({ error: "Could not save Project" + err });
     } else {
-      res.send(users);
+      User.findByIdAndUpdate(
+        { _id: req.params.userId },
+        { $addToSet: { projects: savedProject._id } },
+        function(err, user) {
+          if (err) {
+            res.status(500).send({ error: "Could Not Add The Project" + err });
+          } else {
+            //res.send(user);
+            res.redirect("/my-projects");
+          }
+        }
+      );
     }
   });
 });
@@ -94,7 +110,7 @@ router.post("/register", (req, res) => {
 // Login
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", {
-    successRedirect: "/main",
+    successRedirect: "/my-projects",
     failureRedirect: "/users/login",
     failureFlash: true
   })(req, res, next);
