@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -143,7 +143,7 @@
               </li>
 
               <li class="nav-item active">
-                <a class="nav-link" href="#"> Projects <span class="sr-only"></span></a>
+                <a class="nav-link" href="/my-projects"> Projects <span class="sr-only"></span></a>
               </li>
 
               <li class="nav-item active">
@@ -201,27 +201,37 @@
 
           <!-- Project Title -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">My Projects</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createProject"> Create a Project </a>
+            <h1 class="h3 mb-0 text-gray-800"><%=folder.folderName%></h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createProject"> Create a Folder </a>
           </div>
 
           <!-- Project Carousel -->
           <div class="row">    
             <!-- Course Cards-->
-            <% for(var i = 0; i < user.projects.length; i++) { %>
+            <% for(var i = 0; i < folder.materials.length; i++) { %>
               <div class="col-xl-3 col-lg-4 d-flex">
                   <div class="card shadow mb-3 h-90">
-                    <img
-                        src= "https://thenakedlistener.files.wordpress.com/2014/02/wall-koi-1280x960.jpg"
+                    <!--Checking to see if the material have video link--> 
+                    <% if(folder.materials[i].url) {%>
+                    <iframe 
+                        class="card-img-top"
+                        src="https://www.youtube.com/embed/<%=folder.materials[i].url.slice(32)%>"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                    <%}else{%>
+                        <img
+                        src= "https://www.graphicsfuel.com/wp-content/uploads/2012/03/folder-icon.jpg"
                         class= "card-img-top"
-                        alt="programing langualge image"
-                    >
+                        alt="programing langualge image">
+                    <%}%>
                     <!-- Card Body -->
                     <div class="card-body flex-fill">
                       <div class= "text-center">
-                        <a href="/my-projects/<%=user.projects[i]._id%>" class="font-weight-bold text-primary"><%=user.projects[i].projectName%></a>
+                        <a href="#" class="font-weight-bold text-primary"><%="Content: " + folder.materials[i].title%></a>
                       </div>
-                      <p class="card-text"><%= user.projects[i].description.slice(0, 120) + " ..." %></p>
+                      <p class="card-text"><%= folder.materials[i].description.slice(0, 120) + " ..." %></p>
                     </div>
                   </div>
               </div>
@@ -326,20 +336,24 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="createProject">Create Your Own Project</h5>
+          <h5 class="modal-title" id="createProject"><%= "Add content to " + folder.folderName %></h5>
         </div>
         
         <div class="modal-body">
 
-          <form id= "projectCreationForm" action="/users/new-project/<%=user._id%>"  method="POST">
+          <form id= "projectCreationForm" action="/my-projects/folders/add/<%=folder._id%>"  method="POST">
             
             <div class="form-group">
-              <label for="projectTitle" class="col-form-label">Project Name:</label>
-              <input type="text" class="form-control" id="projectTitle" name="pTitle" placeholder="What is the title of your project?">
+              <label for="projectTitle" class="col-form-label">Content Name:</label>
+              <input type="text" class="form-control" id="projectTitle" name="mTitle" placeholder="What is the title of your content?">
+            </div>
+            <div class="form-group">
+                <label for="projectTitle" class="col-form-label">YouTube Link:</label>
+                <input type="text" class="form-control" id="YouTubeLink" name="yLink" placeholder="Link a YouTube Video?">
             </div>
             <div class="form-group">
               <label for="ProjectDescription" class="col-form-label">Description:</label>
-              <textarea type="text" class="form-control" id="projectDescription" name="pDescription" placeholder="Please describe your project here"></textarea>
+              <textarea type="text" class="form-control" id="projectDescription" name="mDescription" placeholder="Please describe your content here"></textarea>
             </div>
 
             <div class="modal-footer">
@@ -354,23 +368,15 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <script src="../../js/sb-admin-2.min.js"></script>
   <!--<script src="js/dashboard.js"></script>-->
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
-
 </body>
 
 </html>

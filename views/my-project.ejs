@@ -143,7 +143,7 @@
               </li>
 
               <li class="nav-item active">
-                <a class="nav-link" href="/main"> Projects <span class="sr-only"></span></a>
+                <a class="nav-link" href="/my-projects"> Projects <span class="sr-only"></span></a>
               </li>
 
               <li class="nav-item active">
@@ -212,14 +212,14 @@
               <div class="col-xl-3 col-lg-4 d-flex">
                   <div class="card shadow mb-3 h-90">
                     <img
-                        src= "https://thenakedlistener.files.wordpress.com/2014/02/wall-koi-1280x960.jpg"
+                        src= "https://www.graphicsfuel.com/wp-content/uploads/2012/03/folder-icon.jpg"
                         class= "card-img-top"
                         alt="programing langualge image"
                     >
                     <!-- Card Body -->
                     <div class="card-body flex-fill">
                       <div class= "text-center">
-                        <a href="#" class="font-weight-bold text-primary"><%=project.folders[i].folderName%></a>
+                        <a href="/my-projects/folders/<%=project.folders[i]._id%>" class="font-weight-bold text-primary"><%="Folder: " + project.folders[i].folderName%></a>
                       </div>
                       <p class="card-text"><%= project.folders[i].description.slice(0, 120) + " ..." %></p>
                     </div>

@@ -4,9 +4,6 @@ const Project = require("../models/project");
 const Folder = require("../models/folder");
 const User = require("../models/User");
 const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
-
-let curUser;
-
 //return all projects in database
 router.get("/projects", function(req, res) {
   project.find({}, function(err, projects) {
@@ -43,7 +40,7 @@ router.get("/:projectId", ensureAuthenticated, function(req, res) {
       } else {
         res.render("my-project", {
           project: foundProject,
-          user: curUser
+          user: req.user
         });
       }
     });
