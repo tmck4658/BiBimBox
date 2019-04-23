@@ -12,7 +12,7 @@
   <title>BibimBox - Home</title>
 
   <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -215,7 +215,7 @@
                     <% if(folder.materials[i].url) {%>
                     <iframe 
                         class="card-img-top"
-                        src="https://www.youtube.com/embed/<%=folder.materials[i].url.slice(32)%>"
+                        src="https://www.youtube.com/embed/<%=folder.materials[i].url.slice(32,43)%>"
                         frameborder="0" 
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
@@ -229,7 +229,7 @@
                     <!-- Card Body -->
                     <div class="card-body flex-fill">
                       <div class= "text-center">
-                        <a href="#" class="font-weight-bold text-primary"><%="Content: " + folder.materials[i].title%></a>
+                        <a href="#" class="font-weight-bold text-primary"><%= folder.materials[i].title%></a>
                       </div>
                       <p class="card-text"><%= folder.materials[i].description.slice(0, 120) + " ..." %></p>
                     </div>
@@ -238,64 +238,16 @@
               <% } %>    
           </div>
 
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <div class=" col-lg-6 mb-4">
-                <div class="card shadow">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">My Projects
-                            <a href="#" class="float-right">View all</a>
-                        </h6>
-                      </div>
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">project 1
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm float-right"> remove </a>
-                      </li>
-                      <li class="list-group-item">project 2
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm float-right"> remove </a>
-                      </li>
-                      <li class="list-group-item">project 3
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm float-right"> remove </a>
-                      </li>
-                    </ul>
-                    <div class="card-body text-right">
-                      <a href="#" class="card-link" data-toggle="modal" data-target="#createProject">create a project</a>
-                    </div>
-                  </div>
-            </div>
-
-            <div class="col-lg-6 mb-4">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">My Courses</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-                  </div>
-                  <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                  <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
         <!-- /.container-fluid -->
 
-      </div>
+        </div>
       <!-- End of Main Content -->
-
+      </div>
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; BiBimBox 2019</span>
           </div>
         </div>
       </footer>
@@ -368,14 +320,14 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="../../vendor/jquery/jquery.min.js"></script>
-  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="../../js/sb-admin-2.min.js"></script>
+  <script src="../js/sb-admin-2.min.js"></script>
   <!--<script src="js/dashboard.js"></script>-->
 </body>
 
