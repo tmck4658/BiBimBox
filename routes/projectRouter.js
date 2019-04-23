@@ -4,16 +4,6 @@ const Project = require("../models/project");
 const Folder = require("../models/folder");
 const User = require("../models/User");
 const { ensureAuthenticated, forwardAuthenticated } = require("../config/auth");
-//return all projects in database
-router.get("/projects", function(req, res) {
-  project.find({}, function(err, projects) {
-    if (err) {
-      res.status(500).send("Could not fetch project data");
-    } else {
-      res.send(projects);
-    }
-  });
-});
 
 // User my project page
 router.get("/", ensureAuthenticated, function(req, res) {
@@ -24,7 +14,7 @@ router.get("/", ensureAuthenticated, function(req, res) {
         res.status(500).send("Could not fetch user data");
       } else {
         curUser = user;
-        res.render("project-dashboard", {
+        res.render("project-projects", {
           user: user
         });
       }
@@ -38,7 +28,7 @@ router.get("/:projectId", ensureAuthenticated, function(req, res) {
       if (err) {
         res.status(500).send("Could not find your project" + err);
       } else {
-        res.render("my-project", {
+        res.render("project-folders", {
           project: foundProject,
           user: req.user
         });

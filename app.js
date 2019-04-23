@@ -125,8 +125,9 @@ app.use("/", require("./routes/dashboard.js"));
 app.use("/users", require("./routes/users.js"));
 app.use("/courses", require("./routes/courseRouter.js"));
 app.use("/my-projects", require("./routes/projectRouter"));
-app.use("/sections", require("./routes/sectionRouter.js"));
 app.use("/my-projects/folders", require("./routes/folderRouter.js"));
+app.use("/join-projects", require("./routes/joinProjectRouter"));
+app.use("/sections", require("./routes/sectionRouter.js"));
 app.use("/materials", require("./routes/materialRouter.js"));
 //app.use("/uploads", require("./routes/uploadRouter"));
 //#endregion end of routes

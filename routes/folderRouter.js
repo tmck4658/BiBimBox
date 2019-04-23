@@ -12,7 +12,7 @@ router.get("/:folderId", ensureAuthenticated, function(req, res) {
       if (err) {
         res.status(500).send("Could not find your folder" + err);
       } else {
-        res.render("project-content", {
+        res.render("project-contents", {
           folder: foundFolder,
           user: req.user
         });
