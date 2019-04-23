@@ -29,7 +29,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/my-projects">
           <div class="sidebar-brand-icon rotate-n-15">
               <i class="fas fa-box-open"></i>
           </div>
@@ -202,7 +202,7 @@
           <!-- Project Title -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800"><%=folder.folderName%></h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createProject"> Create a Folder </a>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createProject"> Add a Content </a>
           </div>
 
           <!-- Project Carousel -->
@@ -283,51 +283,76 @@
     </div>
   </div>
 
+
+  
   <!-- Modal -->
   <div class="modal fade" id= "createProject" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="createProject"><%= "Add content to " + folder.folderName %></h5>
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link"  data-toggle="collapse" href="#youtube-and-text" role="button" aria-expanded="true" aria-controls="youtube-and-text">YouTube/Text</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#file-uploader" role="button" aria-expanded="false" aria-controls="file-uploader">File Uploader</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
         </div>
         
         <div class="modal-body">
-
-          <form id= "projectCreationForm" action="/my-projects/folders/add/<%=folder._id%>"  method="POST">
-            
-            <div class="form-group">
-              <label for="projectTitle" class="col-form-label">Content Name:</label>
-              <input type="text" class="form-control" id="projectTitle" name="mTitle" placeholder="What is the title of your content?">
+            <div id="collapseArea">
+                <!--Youtube and Text Tab-->
+                <form class="collapse show" id= "youtube-and-text" data-parent="#collapseArea" action="/my-projects/folders/add/<%=folder._id%>"  method="POST">
+                    <div class="form-group">
+                        <label for="projectTitle" class="col-form-label">Content Name:</label>
+                        <input type="text" class="form-control" id="projectTitle" name="mTitle" placeholder="What is the title of your content?">
+                    </div>
+                    <div class="form-group">
+                        <label for="projectTitle" class="col-form-label">YouTube Link (Optional):</label>
+                        <input type="text" class="form-control" id="YouTubeLink" name="yLink" placeholder="Link a YouTube Video?">
+                    </div>
+                    <div class="form-group">
+                        <label for="ProjectDescription" class="col-form-label">Description:</label>
+                        <textarea type="text" class="form-control" id="projectDescription" name="mDescription" placeholder="Please describe your content here"></textarea>
+                    </div>
+        
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
+                <!--File uploader Tab-->
+                <form class="collapse" id= "file-uploader" data-parent="#collapseArea" action="/my-projects/folders/add/<%=folder._id%>"  method="POST">
+                    <div class="form-group">
+                        <label for="projectTitle" class="col-form-label">Content Name:</label>
+                        <input type="text" class="form-control" id="projectTitle" name="mTitle" placeholder="What is the title of your content?">
+                    </div>
+        
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="projectTitle" class="col-form-label">YouTube Link:</label>
-                <input type="text" class="form-control" id="YouTubeLink" name="yLink" placeholder="Link a YouTube Video?">
-            </div>
-            <div class="form-group">
-              <label for="ProjectDescription" class="col-form-label">Description:</label>
-              <textarea type="text" class="form-control" id="projectDescription" name="mDescription" placeholder="Please describe your content here"></textarea>
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-              <button type="submit" class="btn btn-primary">Create</button>
-            </div>
-          </form>
         </div>
-          
       </div>
     </div>
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="../js/sb-admin-2.min.js"></script>
+  <script src="../../js/sb-admin-2.min.js"></script>
   <!--<script src="js/dashboard.js"></script>-->
 </body>
 
