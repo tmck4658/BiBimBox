@@ -48,15 +48,15 @@
           Projects
         </div>
   
-        <!-- Nav Item - Pages Collapse Menu -->
+        <!-- My Project Side Bar Menu -->
         <li class="nav-item active">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/my-projects">
             <i class="fas fa-folder-open"></i>
             <span>My Projects</span>
           </a>
         </li>
   
-        <!-- Nav Item - Utilities Collapse Menu -->
+        <!-- Join a Project Side Bar Menu -->
         <li class="nav-item">
           <a class="nav-link" href="/join-projects">
             <i class="fas fa-folder-plus"></i>
@@ -222,6 +222,8 @@
                         <a href="/my-projects/<%=user.projects[i]._id%>" class="font-weight-bold text-primary"><%=user.projects[i].projectName%></a>
                       </div>
                       <p class="card-text"><%= user.projects[i].description.slice(0, 120) + " ..." %></p>
+                      <a href="#" value="<%=user.projects[i]._id%>" class="btn btn-sm btn-block btn-danger shadow-sm float-left" id="removeProjectBtn"> remove </a>
+                      <a href="#" class="btn btn-sm btn-block btn-primary shadow-sm float-right"> edit </a>
                     </div>
                   </div>
               </div>
@@ -274,10 +276,8 @@
 
             </div>
           </div>
-
         </div>
         <!-- /.container-fluid -->
-
       </div>
       <!-- End of Main Content -->
 
@@ -362,6 +362,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  <script src="js/globalScript.js"></script>
   <!--<script src="js/dashboard.js"></script>-->
 
 </body>

@@ -48,9 +48,9 @@
           Projects
         </div>
   
-        <!-- Nav Item - Pages Collapse Menu -->
+        <!-- My Project Side Bar Menu -->
         <li class="nav-item active">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/my-projects">
             <i class="fas fa-folder-open"></i>
             <span>My Projects</span>
           </a>
@@ -58,7 +58,7 @@
   
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="/join-projects">
             <i class="fas fa-folder-plus"></i>
             <span>Join a Project</span>
           </a>
@@ -201,8 +201,9 @@
 
           <!-- Project Title -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <a href="#" onclick="goBack()" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"> < </a>
             <h1 class="h3 mb-0 text-gray-800"><%=project.projectName%></h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createProject"> Create a Folder </a>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createProject">+</a>
           </div>
 
           <!-- Project Carousel -->
@@ -352,6 +353,13 @@
       </div>
     </div>
   </div>
+
+  <!--Custom Scripts-->
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="../vendor/jquery/jquery.min.js"></script>

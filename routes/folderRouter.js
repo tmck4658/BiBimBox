@@ -21,9 +21,11 @@ router.get("/:folderId", ensureAuthenticated, function(req, res) {
 });
 
 //add content
-router.post("/add/:folderId", function(req, res) {
+router.post("/add/:projectId/:folderId", function(req, res) {
   let materialBody = new Material();
-  (materialBody.title = req.body.mTitle),
+  (materialBody.parentProject = req.params.projectId),
+    (materialBody.parentFolder = req.params.folderId),
+    (materialBody.title = req.body.mTitle),
     (materialBody.url = req.body.yLink),
     (materialBody.description = req.body.mDescription);
   materialBody.save(function(err, savedMaterial) {
