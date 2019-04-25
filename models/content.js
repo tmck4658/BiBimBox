@@ -1,13 +1,17 @@
 const mongoose = require("mongoose");
 
 const ContentSchema = new mongoose.Schema({
+  contentName: {
+    type: String,
+    required: true
+  },
   url: {
     type: String,
     default: "No URL"
   },
   text: {
     type: String,
-    required: true
+    required: false
   }
 });
 

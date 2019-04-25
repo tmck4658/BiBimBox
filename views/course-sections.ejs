@@ -213,13 +213,15 @@
                                 <div class="collapse multi-collapse" id="collapse<%=i%>">
                                         <!--Add Section Content Header Here-->
                                         <div class="accordion col-xl-12" id= "accordionContent">
+                                          <%for(let j = 0; j < course.sections[i].contents.length; j++) {%>
                                             <div id="subHeadingOne">
                                                 <h2 class="mb-0 border-bottom">
                                                     <button class="btn btn-links collapsed" type="button" data-toggle="collapse" data-target="#thing" aria-expanded="false" aria-controls="thing">
-                                                    Add Content
+                                                    <%=course.sections[i].contents[j].contentName%>
                                                     </button>
                                                 </h2>
                                             </div>
+                                          <%}%>
                                             <!--Add Content Button-->
                                             <div id="subHeadingOne">
                                                 <h2 class="mb-0">
@@ -332,7 +334,11 @@
             
             <div class="modal-body">
               <form id= "addContentForm">
-                
+                  <div class="form-group">
+                      <label for="projectTitle" class="col-form-label">Content Title (Required):</label>
+                      <input type="text" class="form-control" id="contentName" name="cName" placeholder="Add Content Name">
+                    </div>
+
                 <div class="form-group">
                   <label for="projectTitle" class="col-form-label">YouTube Link (Optional):</label>
                   <input type="text" class="form-control" id="contentUrl" name="cUrl" placeholder="Add YouTubeLinks Here">

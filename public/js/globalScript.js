@@ -31,12 +31,13 @@ $("#addContentSubmitBtn").on("click", function(e) {
     type: "POST",
     url: "/contents/add/" + sectionId,
     data: {
+      cName: $("#contentName").val(),
       cUrl: $("#contentUrl").val(),
       cText: $("#contentText").val()
     },
     success: function(data) {
-      //location.reload();
-      console.log(data);
+      location.reload();
+      //console.log(data);
     },
     error: function(error) {
       console.log(error);
