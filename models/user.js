@@ -2,7 +2,13 @@ const mongoose = require("mongoose");
 const ObjId = mongoose.Schema.Types.ObjectId;
 
 //creating schema for the mongo database
+//privileges 0 = admin, 1 = staff, 2 = "", 3 = public
 const UserSchema = new mongoose.Schema({
+  privileges: {
+    type: Number,
+    required: true,
+    default: 3
+  },
   fName: {
     type: String,
     required: true

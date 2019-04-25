@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const SectionId = mongoose.Schema.Types.ObjectId;
 
 const CourseSchema = new mongoose.Schema({
-  title: {
+  courseName: {
     type: String,
     required: true
   },

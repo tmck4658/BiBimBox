@@ -56,8 +56,8 @@
           </a>
         </li>
   
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item active">
+        <!-- Join a Project Side Bar Menu -->
+        <li class="nav-item">
           <a class="nav-link" href="/join-projects">
             <i class="fas fa-folder-plus"></i>
             <span>Join a Project</span>
@@ -73,7 +73,7 @@
         </div>
   
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="/my-courses">
             <i class="fas fa-graduation-cap"></i>
             <span>My Courses</span>
@@ -133,7 +133,6 @@
                 <i class="fas fa-search fa-fw"></i>
               </a>
 
-
               <!--Page Navigation End-->
 
               <!-- Dropdown - Messages -->
@@ -184,15 +183,18 @@
 
           <!-- Project Title -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">My Projects</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createProject"> Create a Project </a>
+            <h1 class="h3 mb-0 text-gray-800">Enrolled Courses</h1>
+            <!--Make sure, public status don't have access to create courses-->
+            <% if(user.privileges < 3) {%>
+              <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#createProject"> Create a Course </a>
+            <%}%>
           </div>
 
           <!-- Project Carousel -->
           <div class="row">    
             <!-- Course Cards-->
-            <% for(var i = 0; i < project.length; i++) { %>
-              <div class="col-xl-3 col-lg-4 d-flex" style="height: 25rem">
+            <% for(var i = 0; i < user.courses.length; i++) { %>
+              <div class="col-xl-3 col-lg-4 d-flex">
                   <div class="card shadow mb-3 h-90">
                     <img
                         src= "https://thenakedlistener.files.wordpress.com/2014/02/wall-koi-1280x960.jpg"
@@ -200,14 +202,13 @@
                         alt="programing langualge image"
                     >
                     <!-- Card Body -->
-                    <div class="card-body d-flex flex-column">
+                    <div class="card-body flex-fill">
                       <div class= "text-center">
-                        <a href="/my-projects/<%=project[i]._id%>" class="font-weight-bold text-primary"><%=project[i].projectName%></a>
+                        <a href="/my-courses/<%=user.courses[i]._id%>" class="font-weight-bold text-primary"><%=user.courses[i].courseName%></a>
                       </div>
-                      <p class="card-text"><%= project[i].description.slice(0, 120) + " ..." %></p>
-                      <div class="text-center mt-auto">
-                        <a href="#" class=" btn btn-sm btn-primary shadow-sm"> Join Project </a>
-                      </div>
+                      <p class="card-text"><%= user.courses[i].description.slice(0, 120) + " ..." %></p>
+                      <a href="#" value="<%=user.courses[i]._id%>" class="btn btn-sm btn-block btn-danger shadow-sm float-left" id="removeProjectBtn"> remove </a>
+                      <a href="#" class="btn btn-sm btn-block btn-primary shadow-sm float-right"> edit </a>
                     </div>
                   </div>
               </div>
@@ -260,10 +261,8 @@
 
             </div>
           </div>
-
         </div>
         <!-- /.container-fluid -->
-
       </div>
       <!-- End of Main Content -->
 
@@ -312,20 +311,20 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="createProject">Create Your Own Project</h5>
+          <h5 class="modal-title" id="createProject">Create Your Own Course</h5>
         </div>
         
         <div class="modal-body">
 
-          <form id= "projectCreationForm" action="/users/new-project/<%=user._id%>"  method="POST">
+          <form id= "projectCreationForm" action="my-courses/new-course/<%=user._id%>"  method="POST">
             
             <div class="form-group">
               <label for="projectTitle" class="col-form-label">Project Name:</label>
-              <input type="text" class="form-control" id="projectTitle" name="pTitle" placeholder="What is the title of your project?">
+              <input type="text" class="form-control" id="courseTitle" name="cTitle" placeholder="What is the title of your course?">
             </div>
             <div class="form-group">
               <label for="ProjectDescription" class="col-form-label">Description:</label>
-              <textarea type="text" class="form-control" id="projectDescription" name="pDescription" placeholder="Please describe your project here"></textarea>
+              <textarea type="text" class="form-control" id="courseDescription" name="cDescription" placeholder="Please describe your course here"></textarea>
             </div>
 
             <div class="modal-footer">
@@ -348,6 +347,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  <script src="js/globalScript.js"></script>
   <!--<script src="js/dashboard.js"></script>-->
 
 </body>

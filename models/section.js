@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const MaterialId = mongoose.Schema.Types.ObjectId;
 
 const SectionSchema = new mongoose.Schema({
-  title: {
+  sectionName: {
     type: String,
     required: true
   },
@@ -11,11 +11,7 @@ const SectionSchema = new mongoose.Schema({
       type: MaterialId,
       ref: "Material"
     }
-  ],
-  description: {
-    type: String,
-    required: true
-  }
+  ]
 });
 
 module.exports = mongoose.model("Section", SectionSchema);
